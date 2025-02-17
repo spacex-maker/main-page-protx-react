@@ -3,14 +3,21 @@ import GlobalStyles from './styles/GlobalStyles';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ConfigProvider, theme } from 'antd';
 import 'antd/dist/reset.css'; // 只需要这一个样式文件即可
-import SaaSProductLandingPage from "./demos/SaaSProductLandingPage";
+
+// 页面导入
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import Solutions from "./pages/Solutions";
+import News from "./pages/News";
+import Support from "./pages/Support";
+import Contact from "./pages/Contact";
 import LoginPage from "./pages/Login";
 import SignupPage from "./pages/Signup";
 import JoinUs from "pages/JoinUs";
-import Navigation from "pages/Navigation";
 import ProfilePage from "pages/Profile";
 import About from "pages/About";
 import PartnerSurvey from "pages/PartnerSurvey";
+import Navigation from "pages/Navigation";
 
 // 初始化主题
 const initTheme = () => {
@@ -64,7 +71,15 @@ export default function App() {
       >
         <Router>
           <Routes>
-            <Route path="/" element={<SaaSProductLandingPage />} />
+            {/* 主要页面路由 */}
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/solutions" element={<Solutions />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/contact" element={<Contact />} />
+            
+            {/* 其他页面路由 */}
             <Route path="/navigation" element={<Navigation />} />
             <Route path="/join" element={<JoinUs />} />
             <Route path="/login" element={<LoginPage />} />
