@@ -1,29 +1,63 @@
 import { createGlobalStyle } from 'styled-components'
-import  { globalStyles } from 'twin.macro'
+import { GlobalStyles as BaseStyles } from 'twin.macro'
 
-const GlobalStyles = createGlobalStyle(globalStyles, `
+const CustomStyles = createGlobalStyle`
+  :root {
+    /* 主色调 - 专业深蓝 */
+    --color-primary-50: #f0f7ff;
+    --color-primary-100: #e0f0ff;
+    --color-primary-200: #b9ddff;
+    --color-primary-300: #7cc3ff;
+    --color-primary-400: #36a7ff;
+    --color-primary-500: #0088ff;    /* 主要品牌色 */
+    --color-primary-600: #006ee6;
+    --color-primary-700: #0057b3;
+    --color-primary-800: #004080;
+    --color-primary-900: #002952;
+
+    /* 辅助色调 */
+    --color-secondary-500: #2c5282;  /* 深蓝，用于重要文字 */
+    --color-accent-500: #00b7ff;     /* 亮蓝，用于强调 */
+    
+    /* 功能色 */
+    --color-success: #00c853;
+    --color-warning: #ffd600;
+    --color-error: #ff1744;
+    --color-info: #00b0ff;
+  }
+
   body {
     margin: 0;
-    background: linear-gradient(to bottom right, #1e3a8a, #581c87, #3730a3);
-    min-height: 100vh;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  #root {
-    min-height: 100vh;
+  /* 按钮样式 */
+  .btn-primary {
+    background-color: var(--color-primary-500);
+    &:hover {
+      background-color: var(--color-primary-600);
+    }
   }
 
-  /* Below animations are for modal created using React-Modal */
-  .ReactModal__Overlay {
-    transition: transform 300ms ease-in-out;
-    transition-delay: 100ms;
-    transform: scale(0);
+  /* 链接样式 */
+  a {
+    color: var(--color-primary-500);
+    &:hover {
+      color: var(--color-primary-600);
+    }
   }
-  .ReactModal__Overlay--after-open{
-    transform: scale(1);
-  }
-  .ReactModal__Overlay--before-close{
-    transform: scale(0);
-  }
-`)
+`
+
+const GlobalStyles = () => (
+  <>
+    <BaseStyles />
+    <CustomStyles />
+  </>
+)
 
 export default GlobalStyles
